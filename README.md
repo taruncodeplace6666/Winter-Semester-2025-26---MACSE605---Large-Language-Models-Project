@@ -5,176 +5,58 @@ Ahamed Razi C (25MML0058)
 R Amarnath(25MML0051)
 Adithyash (25MML0002)
 
+# ESP32 Intelligent Monitoring System
+# Description
 
-ESP32 Intelligent Monitoring and Self-Learning Alert System
-Overview
+This project is an AI-based monitoring system for ESP32 devices. It uses Reinforcement Learning, Anomaly Detection, and Active Learning to automatically detect problems and make smart alert decisions.
 
-This project implements an intelligent, self-learning monitoring system for ESP32-based IoT devices using a combination of:
+The system learns from sensor data such as temperature, vibration, battery level, and system status. Over time, it improves its accuracy and reduces false alerts.
 
-Reinforcement Learning (LSTM-based RL agent)
+# Features
 
-Variational Autoencoder (VAE) anomaly detection
+1)Detects anomalies using VAE (Variational Autoencoder)
 
-LLM-based reward shaping
+2)Uses LSTM Reinforcement Learning to make alert decisions
 
-Active learning with human-in-the-loop
+4)Improves learning using LLM-based reward shaping
 
-Real-time sensor data processing
+5)Supports active learning with human feedback
 
-The goal is to create an adaptive system that detects anomalies, predicts failures, and makes optimal alert decisions automatically while continuously improving its performance.
+6)Learns continuously from new data
 
-Problem Statement
+Works with ESP32 sensor data
 
-ESP32 devices generate continuous sensor data such as:
-
-Temperature
-
-Vibration
-
-Battery level
-
-System load
-
-Device status
-
-Traditional systems rely on static thresholds, which:
-
-Cannot adapt to changing conditions
-
-Generate false alerts
-
-Miss early warning signs
-
-Do not learn from past experience
-
-This project solves these problems using AI and reinforcement learning.
-
-System Architecture
-
-The system combines multiple AI components working together:
-
-Sensor Data → Feature Extraction → VAE → RL Agent → LLM Reward Shaping → Action Decision
-                           ↑             ↓
-                    Active Learning ← Experience Memory
-Core Components
-1. LSTM Reinforcement Learning Agent
-
-The RL agent:
-
-Learns from sequences of sensor data
-
-Uses LSTM with attention to understand temporal patterns
-
-Decides whether to trigger alerts or not
-
-Improves decisions over time using rewards
-
-Key capabilities:
-
-Learns optimal alert strategy
-
-Reduces false positives
-
-Adapts to device behavior
-
-2. VAE-Based Anomaly Detector
-
-The Variational Autoencoder (VAE):
-
-Learns normal device behavior
-
-Detects abnormal patterns using reconstruction error
-
-Produces anomaly scores between 0 and 1
-
-This allows early detection of unusual conditions before failure.
-
-3. LLM-Based Reward Shaping
-
-A local LLM (via Ollama) provides intelligent guidance by:
-
-Analyzing system context
-
-Suggesting exploration adjustments
-
-Improving learning efficiency
-
-The LLM helps the RL agent learn faster and smarter.
-
-This creates semantic reward shaping, making learning more meaningful.
-
-4. Active Learning Pipeline
-
-Active learning allows the system to:
-
-Identify uncertain decisions
-
-Request human feedback when needed
-
-Propagate labels to similar states automatically
-
-This reduces human effort while improving accuracy.
-
-5. ESP32 Research Environment
-
-This environment integrates all components and:
-
-Processes incoming ESP32 sensor data
-
-Runs anomaly detection
-
-Makes alert decisions
-
-Applies reward shaping
-
-Updates learning models
-
-Tracks performance statistics
-
-6. Data Loader
-
-Supports:
-
-SQLite sensor database
-
-Automatic feature generation
-
-Synthetic data creation for testing
-
-System Workflow
-
-Step-by-step process:
+# How it works
 
 ESP32 sends sensor data
 
-System extracts features
+System analyzes the data
 
-VAE computes anomaly score
+Detects anomalies
 
-RL agent evaluates device state
+RL agent decides whether to trigger an alert
 
-Agent selects an action (alert / no alert)
+System learns from the result
 
-LLM adjusts reward intelligently
+Performance improves over time
 
-Agent learns from experience
+# Main Components
 
-Active learning improves labels
+lstm_rl_agent.py – Reinforcement Learning agent
 
-System continuously improves performance
+vae_module.py – Anomaly detection
 
-Key Features
+llm_reward_shaper.py – LLM-based reward improvement
 
-Self-learning system
+active_learning.py – Active learning system
 
-Real-time anomaly detection
+esp32_environment.py – Main environment
 
-Adaptive alert decision making
+utils.py – Data loading and processing
 
-Human-in-the-loop learning
+# System Architecture
 
-LLM-enhanced reinforcement learning
+# The system combines multiple AI components working together:
 
-Sequence-aware learning using LSTM
+<img width="1537" height="773" alt="image" src="https://github.com/user-attachments/assets/244428d5-1230-4a88-86a3-a9bc468bc498" />
 
-Works with real ESP32 devices or simulated data
